@@ -16,7 +16,6 @@ kotlin {
             dependencies {
                 api(kotlinx.serialization.json)
                 api(asoft.kotlinx.serialization.mapper)
-                api(asoft.kotlinx.collections.interoperable)
                 api(ktor.http)
             }
         }
