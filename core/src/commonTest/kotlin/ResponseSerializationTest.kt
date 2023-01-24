@@ -42,7 +42,7 @@ class ResponseSerializationTest {
     fun should_deserialize_a_response_without_info() {
         val json = """{"status":{"code":200,"message":"OK"},"payload":{"data":{"type":"Cat"}}}"""
         val resp = Json.decodeResponseFromString(Specie.serializer(), json)
-        expect(resp).toBe<Success<*, *>>()
+        expect(resp).toBe<Success<Any?, Any?>>()
         when (resp) {
             is Failure -> fail()
             is Success -> {
@@ -56,7 +56,7 @@ class ResponseSerializationTest {
     fun should_deserialize_a_response_with_info() {
         val json = """{"status":{"code":200,"message":"OK"},"payload":{"data":{"type":"Cat"},"info":{"gone":false}}}"""
         val resp = Json.decodeResponseWithInfoFromString(Specie.serializer(), Info.serializer(), json)
-        expect(resp).toBe<Success<*, *>>()
+        expect(resp).toBe<Success<Any?, Any?>>()
         when (resp) {
             is Failure -> fail()
             is Success -> {

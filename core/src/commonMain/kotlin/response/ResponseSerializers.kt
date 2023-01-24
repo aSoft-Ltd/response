@@ -8,7 +8,7 @@ import response.success.encodeSuccessToString
 
 fun <D> Json.encodeResponseToString(
     serializer: KSerializer<D>,
-    response: Response<D, *>
+    response: Response<D, Any?>
 ): String = when (response) {
     is Failure -> encodeFailureToString(response)
     is Success -> encodeSuccessToString(serializer, response)
@@ -29,7 +29,7 @@ internal val json = Json {
     isLenient = true
 }
 
-inline fun <reified D> Response<D, *>.toJson(): String {
+inline fun <reified D> Response<D, Any?>.toJson(): String {
     val dataSerializer = serializer<D>()
     return json.encodeResponseToString(dataSerializer, this)
 }

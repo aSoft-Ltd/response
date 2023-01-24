@@ -8,7 +8,7 @@ import response.success.decodeSuccessFromString
 fun <D> Json.decodeResponseFromString(
     dataSerializer: KSerializer<D>,
     json: String,
-): Response<D, *> = try {
+): Response<D, Any?> = try {
     decodeSuccessFromString(dataSerializer, json)
 } catch (cause: Throwable) {
     try {

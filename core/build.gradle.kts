@@ -15,7 +15,7 @@ kotlin {
         val commonMain by getting {
             dependencies {
                 api(kotlinx.serialization.json)
-                api(asoft.kotlinx.serialization.mapper)
+//                api(asoft.kotlinx.serialization.mapper)
                 api(ktor.http)
             }
         }

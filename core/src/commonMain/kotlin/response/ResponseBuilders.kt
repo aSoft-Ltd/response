@@ -64,6 +64,6 @@ fun <D, I : Any> Response<D, I>.body(
     infoSerializer: KSerializer<I>
 ): String = Json.encodeResponseToString(dataSerializer, infoSerializer, this)
 
-fun <D> Response<D, *>.body(
+fun <D> Response<D, Any?>.body(
     serializer: KSerializer<D>
 ): String = Json.encodeResponseToString(serializer, this)

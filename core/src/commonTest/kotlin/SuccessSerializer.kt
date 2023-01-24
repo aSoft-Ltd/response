@@ -2,9 +2,8 @@ import response.Success
 import response.success.decodeSuccessFromString
 import response.success.encodeSuccessToString
 import expect.expect
-import kotlinx.collections.interoperable.listOf
-import kotlinx.collections.interoperable.serializers.ListSerializer
 import kotlinx.serialization.Serializable
+import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.json.Json
 import kotlin.test.Test
 

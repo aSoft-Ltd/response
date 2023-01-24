@@ -5,21 +5,23 @@ import response.Success
 import response.payload.encodePayloadToString
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.json.Json
-import kotlinx.serialization.mapper.Mapper
+
+//import kotlinx.serialization.mapper.Mapper
 
 internal fun <D> Json.encodeSuccessToString(
     serializer: KSerializer<D>,
-    success: Success<D, *>
+    success: Success<D, Any?>
 ): String {
-    val statusJson = encodeToString(Status.serializer(), success.status)
-    val payload = success.payload
-    val successJson = encodePayloadToString(serializer, payload)
-    val mapper = Mapper(this)
-    val map = mapOf(
-        Success<*, *>::status.name to mapper.decodeFromString(statusJson),
-        Success<*, *>::payload.name to mapper.decodeFromString(successJson)
-    )
-    return mapper.encodeToString(map)
+//    val statusJson = encodeToString(Status.serializer(), success.status)
+//    val payload = success.payload
+//    val successJson = encodePayloadToString(serializer, payload)
+//    val mapper = Mapper(this)
+//    val map = mapOf(
+//        Success<Any?, Any?>::status.name to mapper.decodeFromString(statusJson),
+//        Success<Any?, Any?>::payload.name to mapper.decodeFromString(successJson)
+//    )
+//    return mapper.encodeToString(map)
+    TODO()
 }
 
 internal fun <D, I> Json.encodeSuccessToString(
@@ -27,12 +29,13 @@ internal fun <D, I> Json.encodeSuccessToString(
     infoSerializer: KSerializer<I>,
     success: Success<D, I>
 ): String {
-    val statusJson = encodeToString(Status.serializer(), success.status)
-    val successJson = encodePayloadToString(dataSerializer, infoSerializer, success.payload)
-    val mapper = Mapper(this)
-    val map = mapOf(
-        Success<*, *>::status.name to mapper.decodeFromString(statusJson),
-        Success<*, *>::payload.name to mapper.decodeFromString(successJson)
-    )
-    return mapper.encodeToString(map)
+//    val statusJson = encodeToString(Status.serializer(), success.status)
+//    val successJson = encodePayloadToString(dataSerializer, infoSerializer, success.payload)
+//    val mapper = Mapper(this)
+//    val map = mapOf(
+//        Success<Any?, Any?>::status.name to mapper.decodeFromString(statusJson),
+//        Success<Any?, Any?>::payload.name to mapper.decodeFromString(successJson)
+//    )
+//    return mapper.encodeToString(map)
+    TODO()
 }
