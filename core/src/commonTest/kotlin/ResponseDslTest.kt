@@ -1,6 +1,7 @@
 import response.response
 import expect.expect
 import io.ktor.http.*
+import kommander.expect
 import kotlinx.serialization.Serializable
 import kotlin.test.Test
 
@@ -17,7 +18,7 @@ class ResponseDslTest {
         val resp = response {
             resolve(Person("John"))
         }
-        expect(resp.status.code).toBe(HttpStatusCode.OK.value)
+        expect<Int>(resp.status.code).toBe(HttpStatusCode.OK.value)
     }
 
     @Test

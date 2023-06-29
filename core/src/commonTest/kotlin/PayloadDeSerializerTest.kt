@@ -1,5 +1,6 @@
 import response.payload.decodePayloadFromString
 import expect.expect
+import kommander.expect
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.builtins.serializer
 import kotlinx.serialization.json.Json
@@ -16,7 +17,7 @@ class PayloadDeSerializerTest {
     fun should_be_able_to_deserialize_a_payload() {
         val json = """{"data":{"name":"Juma"}}"""
         val payload = Json.decodePayloadFromString(Person.serializer(), json)
-        expect(payload.data.name).toBe("Juma")
+        expect<String>(payload.data.name).toBe("Juma")
     }
 
     @Test

@@ -2,6 +2,7 @@ import response.Success
 import response.success.decodeSuccessFromString
 import response.success.encodeSuccessToString
 import expect.expect
+import kommander.expect
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.builtins.ListSerializer
 import kotlinx.serialization.json.Json
@@ -43,7 +44,7 @@ class SuccessSerializer {
     fun should_deserialize_a_payload_with_info() {
         val input = """{"status":{"code":200,"message":"OK"},"payload":{"data":{"name":"John Doe","age":23},"info":{"registeredOn":1234}}}"""
         val success = json.decodeSuccessFromString(Person.serializer(), input)
-        expect(success.payload.data.name).toBe("John Doe")
+        expect<String>(success.payload.data.name).toBe("John Doe")
     }
 
     @Test

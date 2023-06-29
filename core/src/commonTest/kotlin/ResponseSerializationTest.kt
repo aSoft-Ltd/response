@@ -1,6 +1,7 @@
 import expect.expect
 import expect.toBe
 import io.ktor.http.*
+import kommander.expect
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
 import response.*
@@ -18,7 +19,7 @@ class ResponseSerializationTest {
     fun should_have_an_intuitive_syntax() {
         when (val resp = responseOf(Specie("Human"), Specie("Cat"))) {
             is Failure -> fail()
-            is Success -> expect(resp.status.code).toBe(HttpStatusCode.OK.value)
+            is Success -> expect<Int>(resp.status.code).toBe(HttpStatusCode.OK.value)
         }
     }
 
