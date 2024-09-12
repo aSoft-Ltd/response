@@ -1,22 +1,9 @@
 pluginManagement {
-    enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+    includeBuild("../build-logic")
+}
 
-    repositories {
-        google()
-        gradlePluginPortal()
-        mavenCentral()
-        maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
-    }
-
-    dependencyResolutionManagement {
-        versionCatalogs {
-            file("gradle/versions").listFiles().map {
-                it.nameWithoutExtension to it.absolutePath
-            }.forEach { (name, path) ->
-                create(name) { from(files(path)) }
-            }
-        }
-    }
+plugins {
+    id("multimodule")
 }
 
 fun includeRoot(name: String, path: String) {
@@ -31,13 +18,12 @@ fun includeSubs(base: String, path: String = base, vararg subs: String) {
     }
 }
 
-val tmp = 1
+rootProject.name = "response"
 
-rootProject.name = "asoft"
-
-// dependencies
-includeSubs("functions", "../functions", "core")
-includeSubs("expect", "../expect", "core", "coroutines")
+listOf("kommander", "kase", "lexi").forEach {
+    includeBuild("../$it")
+}
 
 // submodules
 includeSubs("response", ".", "core")
+includeSubs("response-ktor", "ktor", "client", "server")
