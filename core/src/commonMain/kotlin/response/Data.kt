@@ -1,4 +1,4 @@
-package kase
+package response
 
 import kotlinx.serialization.Serializable
 

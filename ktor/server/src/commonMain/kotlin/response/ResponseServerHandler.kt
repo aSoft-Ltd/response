@@ -1,20 +1,12 @@
-package kase.response
+package response
 
 import io.ktor.http.ContentType
 import io.ktor.http.HttpStatusCode
 import io.ktor.server.application.ApplicationCall
-import io.ktor.server.application.call
 import io.ktor.server.response.respondText
-import io.ktor.util.pipeline.PipelineContext
-import kase.ResponseError
-import kase.Failed
-import kase.ResponseException
-import kase.Status
-import kase.Successful
-import kase.toFailed
+import io.ktor.server.routing.RoutingContext
 import kotlinx.serialization.StringFormat
 import kotlinx.serialization.encodeToString
-import io.ktor.server.routing.RoutingContext
 
 suspend inline fun <reified D> RoutingContext.respondJson(codec: StringFormat, block: () -> D) = try {
     call.respond(codec, Successful(block()))

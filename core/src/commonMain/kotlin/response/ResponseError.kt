@@ -1,12 +1,11 @@
 @file:JsExport
 @file:Suppress("NON_EXPORTABLE_TYPE")
 
-package kase
+package response
 
 import kotlinx.serialization.Serializable
 import kotlinx.JsExport
 import kotlinx.JsExportIgnore
-import kotlin.js.JsName
 import kotlin.jvm.JvmOverloads
 
 @Serializable

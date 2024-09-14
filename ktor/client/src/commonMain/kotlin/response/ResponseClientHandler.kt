@@ -1,12 +1,7 @@
-package kase.response
+package response
 
-import io.ktor.client.statement.*
-import kase.ResponseError
-import kase.Failed
-import kase.Response
-import kase.Status
-import kase.Successful
-import kase.toError
+import io.ktor.client.statement.HttpResponse
+import io.ktor.client.statement.bodyAsText
 import kotlinx.serialization.KSerializer
 import kotlinx.serialization.StringFormat
 import kotlinx.serialization.serializer

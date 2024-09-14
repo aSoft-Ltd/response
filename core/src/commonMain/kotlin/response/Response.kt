@@ -1,10 +1,11 @@
 @file:JsExport
 
-package kase
+package response
 
+import kase.Possible
 import kotlinx.JsExport
 
-sealed interface Response<out D> : Possible<D> {
+sealed interface  Response<out D> : Possible<D> {
     val status: Status
 
     val asSuccessful get() = this as? Successful

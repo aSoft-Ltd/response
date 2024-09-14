@@ -1,6 +1,6 @@
 @file:JsExport
 
-package kase
+package response
 
 import kotlinx.serialization.Serializable
 import kotlinx.JsExport

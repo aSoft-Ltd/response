@@ -1,7 +1,7 @@
 @file:JsExport
 @file:Suppress("NON_EXPORTABLE_TYPE")
 
-package kase
+package response
 
 import kase.internal.AbstractPossible
 import kotlinx.serialization.Serializable

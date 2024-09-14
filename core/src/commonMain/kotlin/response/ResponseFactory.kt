@@ -1,6 +1,6 @@
 @file:Suppress("NOTHING_TO_INLINE")
 
-package kase
+package response
 
 inline fun <D> responseOf(value: D): Response<D> = Successful(value)
 
