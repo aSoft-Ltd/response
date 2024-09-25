@@ -34,6 +34,7 @@ suspend fun <T> HttpResponse.getOrThrow(serializer: KSerializer<T>, codec: Strin
             Failed(status, cause.toError())
         }
     }
+    tracer.debug(res.message)
     when (res) {
         is Successful -> tracer.passed()
         is Failed -> tracer.failed(res.error.toException())

@@ -19,7 +19,7 @@ data class Failed(
 
     override fun valueOrThrow(exp: Throwable): Nothing = throw exp
 
-    override fun valueOrThrow(msg: String): Nothing = valueOrThrow(RuntimeException(msg, exception))
+    override fun valueOrThrow(msg: String): Nothing = valueOrThrow(Exception(msg, exception))
 
     override fun valueOrThrow(): Nothing = throw exception
 

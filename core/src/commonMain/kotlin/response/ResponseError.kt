@@ -25,5 +25,5 @@ data class ResponseError(
         stackTrace = error.stackTraceToString()
     )
 
-    fun toException() = RuntimeException(message, RuntimeException(cause))
+    fun toException() = Exception(message, Exception(cause))
 }
