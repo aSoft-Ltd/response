@@ -9,19 +9,17 @@ description = "A kotlin multiplatform library to present common UI states"
 kotlin {
     if (Targeting.JVM) jvm { library() }
     if (Targeting.JS) js(IR) { library() }
-    if (Targeting.WASM) wasm { library() }
-    val osxTargets = if (Targeting.OSX) osxTargets() else listOf()
-//    val ndkTargets = if (Targeting.NDK) ndkTargets() else listOf()
-    val linuxTargets = if (Targeting.LINUX) linuxTargets() else listOf()
-    val mingwTargets = if (Targeting.MINGW) mingwTargets() else listOf()
+    if (Targeting.WASM) wasmJs { library() }
+    if (Targeting.OSX) osxTargets() else listOf()
+//    if (Targeting.NDK) ndkTargets() else listOf()
+    if (Targeting.LINUX) linuxTargets() else listOf()
+    if (Targeting.MINGW) mingwTargets() else listOf()
 
     sourceSets {
-        val commonMain by getting {
-            dependencies {
-                api(projects.responseCore)
-                api(ktor.client.core)
-                api(libs.lexi.api)
-            }
+        commonMain.dependencies {
+            api(projects.responseCore)
+            api(ktor.client.core)
+            api(libs.lexi.api)
         }
     }
 }

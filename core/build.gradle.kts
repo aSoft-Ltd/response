@@ -11,23 +11,15 @@ kotlin {
     if (Targeting.JS) js(IR) { library() }
     if (Targeting.WASM) wasmJs { library() }
     if (Targeting.WASM) wasmWasi { library() }
-    val osxTargets = if (Targeting.OSX) osxTargets() else listOf()
-//    val ndkTargets = if (Targeting.NDK) ndkTargets() else listOf()
-    val linuxTargets = if (Targeting.LINUX) linuxTargets() else listOf()
-    val mingwTargets = if (Targeting.MINGW) mingwTargets() else listOf()
+    if (Targeting.OSX) osxTargets() else listOf()
+//    if (Targeting.NDK) ndkTargets() else listOf()
+    if (Targeting.LINUX) linuxTargets() else listOf()
+    if (Targeting.MINGW) mingwTargets() else listOf()
 
     sourceSets {
-        val commonMain by getting {
-            dependencies {
-                api(libs.kase.possible)
-                api(kotlinx.serialization.core)
-            }
-        }
-
-        val commonTest by getting {
-            dependencies {
-                api(libs.kommander.core)
-            }
+        commonMain.dependencies {
+            api(libs.kase.possible)
+            api(kotlinx.serialization.core)
         }
     }
 }
